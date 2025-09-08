@@ -1,0 +1,65 @@
+import React from 'react';
+import { Globe, Search, Layers } from 'lucide-react';
+import { PathfindingProgress } from '../utils/pathfinder';
+
+interface ProgressDisplayProps {
+  progress: PathfindingProgress;
+}
+
+export const ProgressDisplay: React.FC<ProgressDisplayProps> = ({ progress }) => {
+  return (
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+      <div className="text-center mb-6">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent mx-auto mb-4"></div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">Finding Path...</h3>
+        <p className="text-gray-600">
+          Currently exploring: <span className="font-medium">{progress.currentPage}</span>
+        </p>
+      </div>
+
+      <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <Search className="h-5 w-5 text-blue-600 mr-2" />
+            <span className="text-gray-700 font-medium">Pages Searched</span>
+          </div>
+          <span className="text-blue-600 font-semibold">
+            {progress.searchedPages.toLocaleString()}
+          </span>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <Globe className="h-5 w-5 text-green-600 mr-2" />
+            <span className="text-gray-700 font-medium">Queue Size</span>
+          </div>
+          <span className="text-green-600 font-semibold">
+            {progress.queueSize.toLocaleString()}
+          </span>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <Layers className="h-5 w-5 text-orange-600 mr-2" />
+            <span className="text-gray-700 font-medium">Current Depth</span>
+          </div>
+          <span className="text-orange-600 font-semibold">
+            {progress.depth}
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div 
+            className="bg-gradient-to-r from-blue-500 to-blue-600 h-full transition-all duration-500 ease-out"
+            style={{ width: `${Math.min(progress.searchedPages / 10, 100)}%` }}
+          ></div>
+        </div>
+        <p className="text-xs text-gray-500 mt-2 text-center">
+          Search progress (max 1000 pages)
+        </p>
+      </div>
+    </div>
+  );
+};
