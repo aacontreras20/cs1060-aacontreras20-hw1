@@ -8,7 +8,7 @@ export interface PathfindingProgress {
 }
 
 export class WikipediaPathfinder {
-  private maxDepth: number = 4;
+  private maxDepth: number = 3;
   private maxSearchedPages: number = 1000;
   
   async findPath(
@@ -61,7 +61,7 @@ export class WikipediaPathfinder {
         currentPage: current.page,
         searchedPages,
         queueSize: queue.length,
-        depth: current.depth
+        depth: current.depth + 1
       });
 
       // Stop if we've reached max depth
