@@ -1,1 +1,1 @@
-cs1060-aacontreras20-hw1
+Contributors: Aaron Contreras (gh: aacontreras20, email: aaroncontreras@college.harvard.edu)
