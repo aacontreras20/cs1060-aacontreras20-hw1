@@ -90,14 +90,14 @@ function App() {
               <SearchInput
                 value={startPage}
                 onChange={setStartPage}
-                placeholder="e.g., Barack Obama"
+                placeholder="e.g., Harvard"
                 label="Starting Page"
                 disabled={isSearching}
               />
               <SearchInput
                 value={endPage}
                 onChange={setEndPage}
-                placeholder="e.g., Pizza"
+                placeholder="e.g., Rakesh Khurana"
                 label="Ending Page"
                 disabled={isSearching}
               />
